@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script text="text/javascript" src="script.js"></script> 
+    <title> Modul 4 </title>    
+
+    <style>
+        #judul {
+            background-color: chartreuse;
+            text-align: center;
+            color: yellow;
+        }
+
+        textarea {
+            height: 15px;
+            width: 160px;
+        }
+
+    </style>
+
+</head>
+<body style="text-align:center;">
+    
+    <div id="judul">
+        <h1> Program Mencari Modus, Mean, Max dan Min</h1>
+    </div>
+
+    <table align="center">
+        <tr>
+            <td> Memasukkan Angka 1 </td>
+            <td> : </td>
+            <td> <input type="number" name="" id="angka1"> </td>
+        </tr>
+        <tr>
+            <td> Memasukkan Angka 2 </td>
+            <td> : </td>
+            <td> <input type="number" name="" id="angka2"> </td>
+        </tr>
+        <tr>
+            <td> Memasukkan Angka 3 </td>
+            <td> : </td>
+            <td> <input type="number" name="" id="angka3"> </td>
+        </tr>
+        <tr>
+            <td> Memasukkan Angka 4 </td>
+            <td> : </td>
+            <td> <input type="number" name="" id="angka4"> </td>
+        </tr>
+        <tr>
+            <td> Memasukkan Angka 5 </td>
+            <td> : </td>
+            <td> <input type="number" name="" id="angka5"> </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="button" name="button" value="HASIL"> </td>
+        </tr>
+    </table>
+
+    <table align="center">
+        <tr>
+            <td> Nilai Mean </td>
+            <td> : </td> 
+            <td> <textarea id="hasil1"> </textarea></td>
+        </tr>
+
+        <tr>
+            <td> Nilai Max </td>
+            <td> : </td> 
+            <td> <textarea id="hasil2"> </textarea></td>
+        </tr>
+
+        <tr>
+            <td> Nilai Min </td>
+            <td> : </td> 
+            <td> <textarea id="hasil3"> </textarea></td>
+        </tr>
+
+        <tr>
+            <td> Nilai Modus </td>
+            <td> : </td> 
+            <td> <textarea id="hasil4"> </textarea></td>
+        </tr>
+    </table>
+
+    <script>
+    $(document).ready(function() {
+        $("input:button").click(function(){
+            var a1 = parseInt($("#angka1").val());
+            var a2 = parseInt($("#angka2").val());
+            var a3 = parseInt($("#angka3").val());
+            var a4 = parseInt($("#angka4").val());
+            var a5 = parseInt($("#angka5").val());
+            
+            $("textarea").empty();
+
+            temp = (a1 + a2 + a3 + a4 + a5)/5;
+            $("#hasil1").append(temp);
+
+            var Array = [a1,a2,a3,a4,a5];
+
+            max = Math.max(...Array);
+            $("#hasil2").append(max);
+
+            min = Math.min(...Array);
+            $("#hasil3").append(min);
+
+            temp = {};
+            for (var i = 0; i < Array.length; i++) {
+                if (Array[i] in temp) {
+                    temp[Array[i]]++;
+                } else {
+                    temp[Array[i]] = 1;
+                }
+            }
+            var mod = Array [0];
+            for(bil in temp) {
+                var jum = temp[bil];
+                if(jum > temp[mod]) {
+                    mod = jum;
+                }
+            }
+            $("#hasil4").append(mod)
+        });
+    });
+    </script>
+
+</body>
+</html> 
